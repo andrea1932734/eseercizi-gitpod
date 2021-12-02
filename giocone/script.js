@@ -4,17 +4,21 @@ function startGame() {
       }
       function updateGameArea(){
         myGameArea.wallpaper(wallpaper)
+        redSquare.x+=redSquare.speedx
+        redSquare.y+=redSquare.speedy
+
+
         myGameArea.draw(redSquare)
       }
 
 var myGameArea = {
     canvas : document.createElement("canvas"),
     start : function() {
-        this.canvas.width = 480;
-        this.canvas.height = 270;
+        this.canvas.width = 500;
+        this.canvas.height =500;
         this.context = this.canvas.getContext("2d");
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
-        this.interval = setInterval(updateGameArea, 20); //ogni 20 ms chiamo il metodo updateGameArea
+        this.interval = setInterval(updateGameArea, 10); //ogni 20 ms chiamo il metodo updateGameArea
 
     },
     draw: function(component) {
@@ -32,26 +36,29 @@ var myGameArea = {
         height: 20,
         x: 10,
         y: 120,
-        color: "red"
+        color: "red",
+        speedx : 0,
+        speedy : 0
       }
       var wallpaper = {
-        width: 1000,
-        height: 5000,
-        x: 10,
-        y: 10,
+        width: 1200,
+        height: 4000,
+        x: 0,
+        y: 0,
         color: "white"
       }
+      let v=1
       function funz1(){
-        redSquare.y -= 30;
+        redSquare.speedy -= v;
       }
       function funz2(){
-        redSquare.y += 30;
+        redSquare.speedy += v;
       }
       function funz3(){
-        redSquare.x -= 30;
+        redSquare.speedx -= v;
       }
       function funz4(){
-        redSquare.x += 30;
+        redSquare.speedx += v;
       }
       
       
